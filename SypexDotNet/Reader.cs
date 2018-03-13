@@ -416,19 +416,14 @@ def get_locator(file_name, mode) :
 
         public Reader(string sypexFile)
         {
-            engine = new Lazy<ScriptEngine>(() =>
-            {
-                var eng = Python.CreateEngine();
-                return eng;
-            });
+            engine = new Lazy<ScriptEngine>(Python.CreateEngine);
             locator = new Lazy<dynamic>(() =>
             {
                 dynamic sypexGeo = engine.Value.CreateScriptSourceFromString(pyScript, SourceCodeKind.File);
                 ScriptScope scope = engine.Value.CreateScope();
                 sypexGeo.Execute(scope);
                 var func = scope.GetVariable<Func<string, int, object>>("get_locator");
-                var loc = func(sypexFile, 0);
-                return loc;
+                return func(sypexFile, 0);
             });
         }
 
