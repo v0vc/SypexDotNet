@@ -69,9 +69,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IronPython.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="IronPython.dll" />
     <Content Include="IronPython.Modules.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
